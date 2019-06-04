@@ -4,9 +4,37 @@
 <head>
   
 
+  <!--leaflet verlinken -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+  <!--Fullscreen Plugin -->
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+  <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css"
+    rel="stylesheet" />
+
+  <!--leaflet search // evlt anderes Search Plugin -->
+  <script src="plugins/leaflet-search.min.js"></script>
+  <link href="plugins/leaflet-search.min.css" rel="stylesheet" />
+
   <!--Verlinkung main.js und main.css-->
-  <link rel="stylesheet" href="wege.css">
+  <link rel="stylesheet" href="main.css">
   <script defer src="main.js"></script>
+  <!--Verlinkung MarkerCluster-->
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet" />
+  <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" rel="stylesheet" />
+  <!--Verlinkung der Grenz Json-->
+  <script src="data/Border.js"></script>
+  <script src="data/POI_WGS84_arry.js"></script>
+  <script src="data/Zonen.js"></script>
+  <script src="data/wege.js"></script>
+
+<!--Verlinkung der Minimap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css"
+      rel="stylesheet" />
+
 
   <meta charset="utf-8">
   <title>Weg Nr 1</title>
@@ -37,6 +65,11 @@
 
 
  <h1> Karte mit Weg und den jeweiligen POI einfügen </h1>
+
+ <main>
+    <h2>Karte Implementiert</h2>
+    <div id="map"></div>
+  </main>
 </body>
 
 </html>
