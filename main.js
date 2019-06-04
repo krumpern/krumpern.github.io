@@ -104,6 +104,19 @@ const Themenwege = L.geoJson(wege, {
 }).addTo(karte);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
+// Minimap 
+
+new L.Control.MiniMap(
+  L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+      subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
+  }), {
+      zoomLevelOffset: -4,
+      toggleDisplay: true,
+      minimized: true
+  }
+).addTo(karte);
+
+
 
 /* Versuch: Zonentypen farblich abstimmen -> Fail :(
 const makeZonen = L.geoJson(Zonen);
