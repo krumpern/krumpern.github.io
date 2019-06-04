@@ -78,12 +78,13 @@ const POIClusterGruppe = L.markerClusterGroup();
 const POI_WGS = L.geoJson(POI, {});
 POIClusterGruppe.addLayer(POI_WGS);
 
-
+/// TODOOOO Fix it !
 for (let p of POI){
-  console.log(p)
-POIClusterGruppe.bindPopup(
-  `<h3>${p.properties.NAME}</h3>`
-).openPopup();
+  //console.log(p)
+  POIClusterGruppe.bindPopup(
+  `<h3>Name:${p.properties.NAME}</h3>
+  <h2> Höhe: ${p.properties.SEEHOEHE}</h2>`
+  );
 
 };
 karte.addLayer(POIClusterGruppe);
@@ -98,6 +99,10 @@ const makeZonen = L.geoJson(Zonen, {
 layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 
+const Themenwege = L.geoJson(wege, {
+  color: "#006400"
+}).addTo(karte);
+layerControl.addOverlay(Themenwege, "Themenwege");
 
 
 /* Versuch: Zonentypen farblich abstimmen -> Fail :(
