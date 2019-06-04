@@ -74,26 +74,21 @@ layerControl.addOverlay(Grenze, "Grenze NPHT");
 
 
 // POIs eingefügt, daten mit QGIS konvertiert :))
-const POI_WGS = L.geoJson(POI, {
-  //color: "#FF4000",
-  //pointToLayer:makeMarker,
-//}).addTo(karte);
-});
 const POIClusterGruppe =L.markerClusterGroup();
-/*function makeMarker(feature, latlng) { //Marker definieren
-    const fotoIcon = L.icon({ //Icon definieren
-      //  iconUrl: 'icon/wlan.png',
-      //  iconSize: [16, 16]
-    });
-    const POIMarker = L.marker(latlng, { //marker setzen und icon verwenden
-        icon: fotoIcon
-    });
+const POI_WGS = L.geoJson(POI, {
+});
 
-*/
+console.log(POI.features[0].properties.NAME)
+
+for (let p in POI.features[2]){
+POIClusterGruppe.bindPopup(
+  `<h3>${p.properties.NAME}</h3>`
+).openPopup();
+
+};
 POIClusterGruppe.addLayer(POI_WGS);
     karte.addLayer(POIClusterGruppe);
     layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
-
 
 
  //einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
