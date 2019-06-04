@@ -75,9 +75,24 @@ layerControl.addOverlay(Grenze, "Grenze NPHT");
 
 // POIs eingefügt, daten mit QGIS konvertiert :))
 const POI_WGS = L.geoJson(POI, {
-  color: "#FF4000"
-}).addTo(karte);
-layerControl.addOverlay(POI_WGS, "Points of Interest");
+  //color: "#FF4000",
+  //pointToLayer:makeMarker,
+//}).addTo(karte);
+});
+const POIClusterGruppe =L.markerClusterGroup();
+/*function makeMarker(feature, latlng) { //Marker definieren
+    const fotoIcon = L.icon({ //Icon definieren
+      //  iconUrl: 'icon/wlan.png',
+      //  iconSize: [16, 16]
+    });
+    const POIMarker = L.marker(latlng, { //marker setzen und icon verwenden
+        icon: fotoIcon
+    });
+
+*/
+POIClusterGruppe.addLayer(POI_WGS);
+    karte.addLayer(POIClusterGruppe);
+    layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
 
 
 
