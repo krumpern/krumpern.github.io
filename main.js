@@ -74,24 +74,23 @@ layerControl.addOverlay(Grenze, "Grenze NPHT");
 
 
 // POIs eingefügt, daten mit QGIS konvertiert :))
-const POIClusterGruppe =L.markerClusterGroup();
-const POI_WGS = L.geoJson(POI, {
-});
+const POIClusterGruppe = L.markerClusterGroup();
+const POI_WGS = L.geoJson(POI, {});
+POIClusterGruppe.addLayer(POI_WGS);
 
-console.log(POI.features[0].properties.NAME)
 
-for (let p in POI.features[2]){
+for (let p of POI){
+  console.log(p)
 POIClusterGruppe.bindPopup(
   `<h3>${p.properties.NAME}</h3>`
 ).openPopup();
 
 };
-POIClusterGruppe.addLayer(POI_WGS);
-    karte.addLayer(POIClusterGruppe);
-    layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
+karte.addLayer(POIClusterGruppe);
+layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
 
 
- //einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
+//einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
 const makeZonen = L.geoJson(Zonen, {
   color: "#FF4000"
 

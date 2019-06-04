@@ -1,8 +1,4 @@
-const POI = [{
-"type": "FeatureCollection",
-"name": "POI_WGS84",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
+const POI = [
 { "type": "Feature", "properties": { "OBJECTID": 75, "NAME": "Felsenkapelle", "SEEHOEHE": null, "URL_INTERN": " ", "URL_EXTERN": " ", "POI_TYP": 13, "LAND": "Tirol", "BILDUNG": 0, "JARPRO15": 1 }, "geometry": { "type": "Point", "coordinates": [ 12.46209994479034, 47.126443587782873 ] } },
 { "type": "Feature", "properties": { "OBJECTID": 76, "NAME": "Schleierfall", "SEEHOEHE": null, "URL_INTERN": " ", "URL_EXTERN": " ", "POI_TYP": 33, "LAND": "Tirol", "BILDUNG": 0, "JARPRO15": 1 }, "geometry": { "type": "Point", "coordinates": [ 12.467115964876346, 47.133193158585684 ] } },
 { "type": "Feature", "properties": { "OBJECTID": 77, "NAME": "Hohe Achsel", "SEEHOEHE": null, "URL_INTERN": " ", "URL_EXTERN": " ", "POI_TYP": 37, "LAND": "Tirol", "BILDUNG": 0, "JARPRO15": 1 }, "geometry": { "type": "Point", "coordinates": [ 12.47406977094842, 47.126950793256043 ] } },
@@ -529,4 +525,3 @@ const POI = [{
 { "type": "Feature", "properties": { "OBJECTID": 523, "NAME": "Mountainbikeroute Dorferalmweg - Johannishütte", "SEEHOEHE": null, "URL_INTERN": " ", "URL_EXTERN": " ", "POI_TYP": 32, "LAND": "Tirol", "BILDUNG": 0, "JARPRO15": 1 }, "geometry": { "type": "Point", "coordinates": [ 12.334401677500166, 47.060003481955349 ] } },
 { "type": "Feature", "properties": { "OBJECTID": 524, "NAME": "Mountainbikeroute Zettersfeldrunde", "SEEHOEHE": null, "URL_INTERN": " ", "URL_EXTERN": " ", "POI_TYP": 32, "LAND": "Tirol", "BILDUNG": 0, "JARPRO15": 1 }, "geometry": { "type": "Point", "coordinates": [ 12.804435057998742, 46.853466675272237 ] } }
 ]
-}]
