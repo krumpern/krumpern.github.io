@@ -2,82 +2,89 @@ body {
     max-width: 1280px;
     margin: auto;
     font-family: "Roboto", sans-serif;
-}
-
-header {
+  }
+  
+  #map {
+    width: 1280px;
+    margin:auto;
+    height: 70vh;
+    border: 1px solid gray;
+  }
+  
+  header {
     text-align: center;
     background-image: url("images/header.jpg");
     background-position: 0 50%;
-    padding: 6em 0;
-
-}
-
-
-header h1 {
+    padding: 10em 0;
+    
+  }
+  
+  
+  header h1{
     font-size: 4em;
     color: white;
-    margin: 0;
-}
-
-
-header h2 {
+    margin:0;
+  }
+  
+  
+  header h2 {
     font-size: 2em;
-
-}
-
-
-/* Naviagtion einfügen */
-
-#menu {
-    font-size: 14px;
-    position: absolute;
-}
-
-#menu ul {
-    list-style-type: none;
-    list-style-image: none;
-    margin: 0;
-    padding: 0;
-}
-
-#menu li.topmenu {
-    float: left;
-}
-
-.topmenu a {
-    float: left;
-    width: 120px;
-    text-align: center;
-}
-
-.topmenu ul {
-    display: none;
-}
-
-.topmenu a,
-.submenu a {
-    padding: 15px;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    background-color: grey;
-    margin: 0;
-}
-
-.submenu a {
-    font-size: 12px;
-    width: 120px;
-    position: relative;
-    clear: both;
-}
-
-#menu a:hover,
-.topmenu.on a {
-    color: white;
-    background-color: darkgrey !important;
-}
-
-.topmenu:hover ul {
-    display: block;
-    z-index: 500;
-}
+        
+    }
+    
+       
+  /* Naviagtion einfügen */ 
+  
+  #menu {
+    font-size:14px;
+    position:absolute;
+  }
+  
+  #menu ul {
+    list-style-type:none;
+    list-style-image:none;
+    margin:0;
+    padding:0;
+  
+  }
+  
+  #menu li.topmenu {
+    float:left;
+  }
+  
+  .topmenu a {
+    float:left;
+    width:400px;
+    text-align:center;
+  }
+  
+  .topmenu ul{
+    display:none;
+  }
+  
+  .topmenu a, .submenu a{
+    padding:15px;
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    background-color:grey;
+    margin:0;
+  }
+  
+  .submenu a{
+    font-size:12px;
+    width:400px;
+    position:relative;
+    clear:both;
+  }
+  
+  #menu a:hover, .topmenu.on a {
+    color:white;
+    background-color:darkgrey !important;
+  }
+  
+  .topmenu:hover ul {
+    display:block;
+    z-index:500;
+  }
+  
