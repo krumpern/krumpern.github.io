@@ -36,6 +36,12 @@
   <!-- verlinken des GPX plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
 
+  <!--- Filter Button --->
+  <link rel="stylesheet" href="leaflet-easy-button.css" />
+  <link rel="stylesheet" href="leaflet-tag-filter-button.css" />
+  <script src="leaflet-easy-button.js"></script>
+  <script src="leaflet-tag-filter-button.js"></script>
+
   <meta charset="utf-8">
   <title>Themenwanderwege Nationalpark Hohe Tauern</title>
 </head>
@@ -62,6 +68,12 @@
   </header>
 
   <main>
+    <!-- Such buttons -->
+        <div class="btn-group">
+            <button type="button" id="allbus" class="btn btn-success">All</button>
+            <button type="button" id="others" class="btn btn-primary">Others</button>
+            <button type="button" id="cafes" class="btn btn-danger">Cafes</button>
+        </div>
     <h2>Karte Implementiert</h2>
     <div id="map"></div>
     <br>

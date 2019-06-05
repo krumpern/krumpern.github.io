@@ -101,7 +101,7 @@ layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 
 //--------------THemenwege-------------//
-let Themenwege = L.markerClusterGroup();
+var Themenwege = L.markerClusterGroup();
 const Themenwege_json = L.geoJson(wege)
 
 Themenwege.addLayer(Themenwege_json);
@@ -117,75 +117,18 @@ Themenwege.bindPopup(function(layer) {
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
+//--------------Suchfeld Try try tryyyy--------
+var fastMarker = L.marker([36.8963965256, 30.7087719440], { tags: ['fast'] }).addTo(karte).bindPopup('fast');
+	var slowMarker = L.marker([36.8967740487, 30.7107782364], { tags: ['slow'] }).addTo(karte).bindPopup('slow');
+	var bothMarker = L.marker([36.8881768737, 30.7024331594], { tags: ['fast', 'slow'] }).addTo(karte).bindPopup('fast & slow');
 
-//--------------------- gpx track laden.---------------------
-var gpx = 'Debanttal.gpx'; // URL to your GPX file or the GPX itself
-new L.GPX(gpx, {
-  async: true,
-  marker_options: {
-    startIconUrl: 'images/pin-icon-start.png',
-    endIconUrl: 'images/pin-icon-end.png',
-    shadowUrl: 'images/pin-shadow.png'
-  }
-}).on('loaded', function(e) {
-  karte.fitBounds(e.target.getBounds());
-}).on('addline', function(e) {
-  //console.log('linie geladen');
-  const controlElevation = L.control.elevation({
-    //collapsed: true,        für in Karte Implementierte Höhenprofile.
-    detachedView: true,
-    position: "bottomright",
-  //  elevationDiv: "#elevation-div",
-  });
-  controlElevation.addTo(karte);
-  controlElevation.addData(e.line);
-  const gpxline = e.line.getLatLngs();
-  //console.log(gpxline);
-  for (let i=1; i< gpxline.length; i+=1){
-    //console.log(gpxline[i]);
-    let p1 = gpxline[i-1];
-    let p2 = gpxline[i];
-    let dist = karte.distance(
-      [p1.lat,p1.lng],
-      [p2.lat,p2.lng]
-    );
-    let delta = (p2.meta.ele - p1.meta.ele);
-    let proz = (dist != 0 ? delta / dist * 100.0 : 0).toFixed(1);
-    //console.log("Distanze: ", dist, 'höhendif: ', delta, 'steigung: ', proz);
-    let farbe =
-    proz >= 10? '#d73027':
-    proz >= 6? '#fc8d59':
-    proz >= 2? '#fee08b':
-    proz >= 0? '#ffffbf':
-    proz >= -6? '#d9ef8b':
-    proz >= -10? '#91cf60':
-      '#1a9850';
+	//
 
-    L.polyline(
-      [
-        [p1.lat,p1.lng],
-        [p2.lat,p2.lng],
-      ], {
-        color:farbe,
-      }
-    ).addTo(karte);
-}
-});
-
-
-// Minimap
-
-new L.Control.MiniMap(
-  L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
-      subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-  }), {
-      zoomLevelOffset: -4,
-      toggleDisplay: true,
-      minimized: true
-  }
-).addTo(karte);
-
-
+	L.control.tagFilterButton({
+        data: ['fast', 'slow', 'none'],
+        icon: '<img src="filter.png">',
+        filterOnEveryClick: true
+    }).addTo(karte);
 
 /* Versuch: Zonentypen farblich abstimmen -> Fail :(
 const makeZonen = L.geoJson(Zonen);

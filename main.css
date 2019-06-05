@@ -16,7 +16,7 @@ header {
   background-image: url("images/header.jpg");
   background-position: 0 50%;
   padding: 10em 0;
-  
+
 }
 
 
@@ -29,11 +29,11 @@ header h1{
 
 header h2 {
   font-size: 2em;
-      
+
   }
-  
-     
-/* Naviagtion einfügen */ 
+
+
+/* Naviagtion einfügen */
 
 #menu {
   font-size:14px;
@@ -87,3 +87,8 @@ header h2 {
   display:block;
   z-index:500;
 }
+
+/* Such leiste */
+button {
+        width: 100px;
+    }
