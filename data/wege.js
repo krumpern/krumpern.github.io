@@ -1,13 +1,5 @@
-const wege = [{
-  "type": "FeatureCollection",
-  "name": "wege_Try",
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-    }
-  },
-  "features": [{
+const wege =
+  [{
       "type": "Feature",
       "properties": {
         "OBJECTID": 1,
@@ -7442,5 +7434,3 @@ const wege = [{
       }
     }
   ]
-}
-]

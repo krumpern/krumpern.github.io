@@ -1,5 +1,6 @@
 let karte = L.map("map");
 
+
 const kartenLayer = {
   osm: L.tileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     subdomains: ["a", "b", "c"],
@@ -62,7 +63,7 @@ const layerControl = L.control.layers({
 }).addTo(karte);
 
 kartenLayer.bmapgrau.addTo(karte);
-karte.setView([47.208333, 13, 038240], 10);
+karte.setView([47.208333, 13.038240], 10);
 
 karte.addControl(new L.Control.Fullscreen());
 
@@ -73,38 +74,50 @@ const Grenze = L.geoJson(Border, {
 layerControl.addOverlay(Grenze, "Grenze NPHT");
 
 
-// POIs eingefügt, daten mit QGIS konvertiert :))
-const POIClusterGruppe = L.markerClusterGroup();
-const POI_WGS = L.geoJson(POI, {});
-POIClusterGruppe.addLayer(POI_WGS);
+//--------------------POI POPUP-----------------------//
+let PointsofInterest = L.markerClusterGroup();
+const poi_json = L.geoJson(POI)
 
-/// TODOOOO Fix it !
-for (let p of POI){
-  //console.log(p)
-  POIClusterGruppe.bindPopup(
-  `<h3>Name:${p.properties.NAME}</h3>
-  <h2> Höhe: ${p.properties.SEEHOEHE}</h2>`
-  );
-
-};
-karte.addLayer(POIClusterGruppe);
-layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
+PointsofInterest.addLayer(poi_json);
+karte.fitBounds(PointsofInterest.getBounds());
+PointsofInterest.bindPopup(function(layer) {
+  const props = layer.feature.properties;
+  const NAME = (props.NAME)
+  const popupText = `<h3>${props.NAME}</h3>
+  <p>Seehöhe: ${props.SEEHOEHE}</p>
+  <p>Link: ${props.URL_INTERN}</p>`;
+  return popupText;
+});
+//karte.addLayer(PointsofInterest);
+layerControl.addOverlay(PointsofInterest, "Points of Interest");
 
 
 //einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
 const makeZonen = L.geoJson(Zonen, {
   color: "#FF4000"
 
-}).addTo(karte);
+})//.addTo(karte);
 layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 
-const Themenwege = L.geoJson(wege, {
-  color: "#006400"
-}).addTo(karte);
+//--------------THemenwege-------------//
+let Themenwege = L.markerClusterGroup();
+const Themenwege_json = L.geoJson(wege[1])
+
+Themenwege.addLayer(Themenwege_json);
+karte.fitBounds(Themenwege.getBounds());
+Themenwege.bindPopup(function(layer) {
+  const props_wege = layer.feature.properties;
+  const NAME_wege = (props_wege.NAME_DE)
+  const popupText = `<h3>${props_wege.NAME_DE}</h3>
+  <p>Gehzeit in Stunden: ${props_wege.GEHZEIT}</p>
+  <p>Bschreibung ${props_wege.BESCHREIBUNG}</p>`;
+  return popupText;
+});
+karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
-// Minimap 
+// Minimap
 
 new L.Control.MiniMap(
   L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
@@ -115,3 +128,36 @@ new L.Control.MiniMap(
       minimized: true
   }
 ).addTo(karte);
+
+
+
+/* Versuch: Zonentypen farblich abstimmen -> Fail :(
+const makeZonen = L.geoJson(Zonen);
+const farbPaletteZonen = [
+  [0, "#01DF01"],
+  [1, "#FF0000"]
+];
+console.log(farbPaletteZonen)
+L.geoJson(Zonen, {
+pointToLayer: function (feature, latlng) {
+  if (feature.properties.KERNZONE) {
+    let color = farbPaletteZonen[farbPaletteZonen.length - 1][1];
+    for (let i = 0; i < farbPaletteZonen.length; i++) {
+      if (feature.properties.KERNZONE < farbPaletteZonen[i][0]) {
+        color = farbPaletteZonen[i][1];
+        break;
+      } else {
+
+      }
+
+    }
+  }
+
+}
+}).addTo(makeZonen);
+layerControl.addOverlay(makeZonen, "Zonen NPHT");
+
+makeZonen.addTo(karte)
+
+
+*/

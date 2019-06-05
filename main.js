@@ -63,7 +63,7 @@ const layerControl = L.control.layers({
 }).addTo(karte);
 
 kartenLayer.bmapgrau.addTo(karte);
-karte.setView([47.208333, 13, 038240], 10);
+karte.setView([47.208333, 13.038240], 10);
 
 karte.addControl(new L.Control.Fullscreen());
 
@@ -89,9 +89,7 @@ PointsofInterest.bindPopup(function(layer) {
   return popupText;
 });
 karte.addLayer(PointsofInterest);
-
-
-
+layerControl.addOverlay(PointsofInterest, "Points of Interest");
 
 
 //einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
@@ -117,6 +115,7 @@ Themenwege.bindPopup(function(layer) {
   return popupText;
 });
 karte.addLayer(Themenwege);
+layerControl.addOverlay(Themenwege, "Themenwege");
 
 // Minimap
 
@@ -162,14 +161,3 @@ makeZonen.addTo(karte)
 
 
 */
-
-
-
-
-
-
-// Einfügen der Themenwege Fail: Overlay schein auf aber nicht die Wege in der Karte, kein Fehler in der Konsole!!!
-/*const makeWege = L.geoJson(Themenwege, {
-  color: "#2E2EFE"
-}).addTo(karte);
-layerControl.addOverlay(makeWege, "Themenwege NPHT");*/
