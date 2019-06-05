@@ -1,6 +1,5 @@
 let karte = L.map("map");
 
-let PointsofInterest = L.markerClusterGroup();
 
 const kartenLayer = {
   osm: L.tileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
@@ -75,24 +74,8 @@ const Grenze = L.geoJson(Border, {
 layerControl.addOverlay(Grenze, "Grenze NPHT");
 
 
-// POIs eingefügt, daten mit QGIS konvertiert :))
-/*const POIClusterGruppe = L.markerClusterGroup();
-const POI_WGS = L.geoJson(POI);
-POIClusterGruppe.addLayer(POI_WGS);
-
-/// TODOOOO Fix it ! print last entry why?
-
-for (p of POI){
-  console.log(p)
-  POIClusterGruppe.bindPopup(
-  `<h3>Name:${p.properties.NAME}</h3>`
-);
-
-};
-karte.addLayer(POIClusterGruppe);
-layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
-*/
-//--------------------Versuch den POPUP nachzubauen -----------------------//
+//--------------------POI POPUP-----------------------//
+let PointsofInterest = L.markerClusterGroup();
 const poi_json = L.geoJson(POI)
 
 PointsofInterest.addLayer(poi_json);
@@ -100,7 +83,9 @@ karte.fitBounds(PointsofInterest.getBounds());
 PointsofInterest.bindPopup(function(layer) {
   const props = layer.feature.properties;
   const NAME = (props.NAME)
-  const popupText = `<h1>${props.NAME}</h1>`;
+  const popupText = `<h3>${props.NAME}</h3>
+  <p>Seehöhe: ${props.SEEHOEHE}</p>
+  <p>Link: ${props.URL_INTERN}</p>`;
   return popupText;
 });
 karte.addLayer(PointsofInterest);
@@ -117,10 +102,21 @@ const makeZonen = L.geoJson(Zonen, {
 layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 
-const Themenwege = L.geoJson(wege, {
-  color: "#006400"
-}).addTo(karte);
-layerControl.addOverlay(Themenwege, "Themenwege");
+//--------------THemenwege-------------//
+let Themenwege = L.markerClusterGroup();
+const Themenwege_json = L.geoJson(wege)
+
+Themenwege.addLayer(Themenwege_json);
+karte.fitBounds(Themenwege.getBounds());
+Themenwege.bindPopup(function(layer) {
+  const props_wege = layer.feature.properties;
+  const NAME_wege = (props_wege.NAME_DE)
+  const popupText = `<h3>${props_wege.NAME_DE}</h3>
+  <p>Gehzeit in Stunden: ${props_wege.GEHZEIT}</p>
+  <p>Bschreibung ${props_wege.BESCHREIBUNG}</p>`;
+  return popupText;
+});
+karte.addLayer(Themenwege);
 
 // Minimap
 
