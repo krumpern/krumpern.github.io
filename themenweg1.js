@@ -116,6 +116,61 @@ Themenwege.bindPopup(function(layer) {
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
+//--------------------- gpx track laden.---------------------
+
+var gpx = 'data/Debanttal.gpx'; // URL to your GPX file or the GPX itself
+new L.GPX(gpx, {
+  async: true,
+  marker_options: {
+    startIconUrl: 'images/pin-icon-start.png',
+    endIconUrl: 'images/pin-icon-end.png',
+    shadowUrl: 'images/pin-shadow.png'
+  }
+}).on('loaded', function(e) {
+  karte.fitBounds(e.target.getBounds());
+}).on('addline', function(e) {
+console.log(gpx);
+  const controlElevation = L.control.elevation({
+    collapsed: true,        //für in Karte Implementierte Höhenprofile.
+    //detachedView: true,
+    position: "bottomleft",
+  //  elevationDiv: "#elevation-div",
+  });
+  controlElevation.addTo(karte);
+  controlElevation.addData(e.line);
+  const gpxline = e.line.getLatLngs();
+  //console.log(gpxline);
+  for (let i=1; i< gpxline.length; i+=1){
+    //console.log(gpxline[i]);
+    let p1 = gpxline[i-1];
+    let p2 = gpxline[i];
+    let dist = karte.distance(
+      [p1.lat,p1.lng],
+      [p2.lat,p2.lng]
+    );
+    let delta = (p2.meta.ele - p1.meta.ele);
+    let proz = (dist != 0 ? delta / dist * 100.0 : 0).toFixed(1);
+    //console.log("Distanze: ", dist, 'höhendif: ', delta, 'steigung: ', proz);
+    let farbe =
+    proz >= 10? '#d73027':
+    proz >= 6? '#fc8d59':
+    proz >= 2? '#fee08b':
+    proz >= 0? '#ffffbf':
+    proz >= -6? '#d9ef8b':
+    proz >= -10? '#91cf60':
+      '#1a9850';
+
+    L.polyline(
+      [
+        [p1.lat,p1.lng],
+        [p2.lat,p2.lng],
+      ], {
+        color:farbe,
+      }
+    ).addTo(karte);
+}
+});
+
 // Minimap
 
 new L.Control.MiniMap(
