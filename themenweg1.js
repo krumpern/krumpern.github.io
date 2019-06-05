@@ -63,7 +63,7 @@ const layerControl = L.control.layers({
 }).addTo(karte);
 
 kartenLayer.bmapgrau.addTo(karte);
-karte.setView([47.208333, 13.038240], 10);
+//karte.setView([47.208333, 13.038240], 10);
 
 karte.addControl(new L.Control.Fullscreen());
 
@@ -79,7 +79,6 @@ let PointsofInterest = L.markerClusterGroup();
 const poi_json = L.geoJson(POI)
 
 PointsofInterest.addLayer(poi_json);
-karte.fitBounds(PointsofInterest.getBounds());
 PointsofInterest.bindPopup(function(layer) {
   const props = layer.feature.properties;
   const NAME = (props.NAME)
@@ -102,7 +101,7 @@ layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 //--------------THemenwege-------------//
 let Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege[1])
+const Themenwege_json = L.geoJson(wege[0])
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
