@@ -1,5 +1,7 @@
 let karte = L.map("map");
 
+let PointsofInterest = L.markerClusterGroup();
+
 const kartenLayer = {
   osm: L.tileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     subdomains: ["a", "b", "c"],
@@ -74,21 +76,37 @@ layerControl.addOverlay(Grenze, "Grenze NPHT");
 
 
 // POIs eingefügt, daten mit QGIS konvertiert :))
-const POIClusterGruppe = L.markerClusterGroup();
-const POI_WGS = L.geoJson(POI, {});
+/*const POIClusterGruppe = L.markerClusterGroup();
+const POI_WGS = L.geoJson(POI);
 POIClusterGruppe.addLayer(POI_WGS);
 
-/// TODOOOO Fix it !
-for (let p of POI){
-  //console.log(p)
+/// TODOOOO Fix it ! print last entry why?
+
+for (p of POI){
+  console.log(p)
   POIClusterGruppe.bindPopup(
-  `<h3>Name:${p.properties.NAME}</h3>
-  <h2> Höhe: ${p.properties.SEEHOEHE}</h2>`
-  );
+  `<h3>Name:${p.properties.NAME}</h3>`
+);
 
 };
 karte.addLayer(POIClusterGruppe);
 layerControl.addOverlay(POIClusterGruppe, "Points of Interest");
+*/
+//--------------------Versuch den POPUP nachzubauen -----------------------//
+const poi_json = L.geoJson(POI)
+
+PointsofInterest.addLayer(poi_json);
+karte.fitBounds(PointsofInterest.getBounds());
+PointsofInterest.bindPopup(function(layer) {
+  const props = layer.feature.properties;
+  const NAME = (props.NAME)
+  const popupText = `<h1>${props.NAME}</h1>`;
+  return popupText;
+});
+karte.addLayer(PointsofInterest);
+
+
+
 
 
 //einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
@@ -104,7 +122,7 @@ const Themenwege = L.geoJson(wege, {
 }).addTo(karte);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
-// Minimap 
+// Minimap
 
 new L.Control.MiniMap(
   L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
