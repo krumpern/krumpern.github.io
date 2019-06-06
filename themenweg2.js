@@ -101,7 +101,7 @@ layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 //--------------THemenwege-------------//
 let Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege[0])
+const Themenwege_json = L.geoJson(wege[1])
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
