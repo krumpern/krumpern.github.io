@@ -118,7 +118,7 @@ layerControl.addOverlay(Themenwege, "Themenwege");
 
 //--------------------- gpx track laden.---------------------
 
-var gpx = 'data/1_Natur-und_Kulturlehrweg_Debanttal.gpx'; // URL to your GPX file or the GPX itself
+var gpx = 'data/2_Alpenblumenweg_Oberseite_kurz.gpx'; // URL to your GPX file or the GPX itself
 new L.GPX(gpx, {
   async: true,
   marker_options: {
