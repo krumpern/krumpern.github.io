@@ -87,3 +87,46 @@ header h2 {
   display:block;
   z-index:500;
 }
+
+
+/* Krumpern vorstellung*/ 
+
+
+.author1{
+
+  text-align: center;
+}
+
+.author1 img{
+margin-top:20px;}
+
+.author1 address a {
+  color: grey;
+}
+
+
+
+.author2{
+  text-align: center;
+ 
+}
+
+.author2 img{
+margin-top:0px;}
+
+.author2 address a {
+  color: grey;
+}
+
+
+.author3{
+  text-align: center;
+}
+
+.author3 img{
+
+margin-top:0px;}
+
+.author3 address a {
+  color: grey;
+}

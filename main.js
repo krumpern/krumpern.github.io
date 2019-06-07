@@ -117,6 +117,8 @@ Themenwege.bindPopup(function(layer) {
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
+
+/*
 //--------------Suchfeld Try try tryyyy--------
 var fastMarker = L.marker([36.8963965256, 30.7087719440], { tags: ['fast'] }).addTo(karte).bindPopup('fast');
 	var slowMarker = L.marker([36.8967740487, 30.7107782364], { tags: ['slow'] }).addTo(karte).bindPopup('slow');
@@ -129,6 +131,36 @@ var fastMarker = L.marker([36.8963965256, 30.7087719440], { tags: ['fast'] }).ad
         icon: '<img src="filter.png">',
         filterOnEveryClick: true
     }).addTo(karte);
+
+
+*/ 
+// Anderer Versuch: https://stackoverflow.com/questions/21974597/leaflet-js-is-it-possible-to-filter-geojson-features-by-property
+
+
+
+L.geoJson(wege, {
+  filter: function(feature, layer) {
+      return feature.properties.GEHZEIT;
+  }
+}).addTo(karte);
+
+
+L.geoJson(wege, {
+  pointToLayer: function(feature, latlng) {
+      L.marker(latlng, {
+          tags: [ '3']
+      });
+  }
+}).addTo( karte);
+
+
+
+
+L.control.tagFilterButton({
+  data: [ '3']
+}).addTo( karte );
+
+
 
 /* Versuch: Zonentypen farblich abstimmen -> Fail :(
 const makeZonen = L.geoJson(Zonen);
