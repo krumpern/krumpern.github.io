@@ -109,7 +109,7 @@ Themenwege.bindPopup(function(layer) {
   <p>Bschreibung ${props_wege.BESCHREIBUNG}</p>`;
   return popupText;
 });
-//karte.addLayer(Themenwege);
+karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 /*
 const suchFeld_Name = new L.Control.Search( {
@@ -141,7 +141,7 @@ const suchFeld_Gehzeit = new L.Control.Search( {
     layer: Themenwege_json,
     propertyName: 'GEHZEIT',
     zoom:15,
-    marker: {makeMarker},
+    marker: false,
     initial: false,
     collapsed: false,
     textPlaceholder: "Suche nach Gehzeit",

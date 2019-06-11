@@ -1,97 +1,95 @@
-body {
-  max-width: 1280px;
-  margin: auto;
-  font-family: "Roboto", sans-serif;
-}
-
-#map {
-  width: 1280px;
-  margin: auto;
-  height: 70vh;
-  border: 1px solid gray;
-}
-
-header {
+header{
   text-align: center;
-  width: 1290px;
+  weight: 1280px;
   background-image: url("images/header.jpg");
-  background-position: 0 50%;
+  background-position: 0 35%;
   padding: 10em 0;
 
 }
 
+body{
+  max-width: 1280px;
+  margin: auto;
+  color:rgba(52, 73, 97,1);
+}
+
+p{
+  font-size:1.3em;
+  max-width: 1280px;
+}
 
 header h1 {
   font-size: 4em;
-  color: white;
+  color: rgba(52, 73, 97,1);
   margin: 0;
 }
 
 
-header h2 {
+ h2 {
   font-size: 2em;
-
+  color:rgba(80, 91, 25,1)
 }
-
 
 /* Naviagtion einfügen */
 
 #menu {
-  font-size: 14px;
-  position: absolute;
+  font-size:14px;
+  position:absolute;
 }
 
 #menu ul {
-  list-style-type: none;
-  list-style-image: none;
-  margin: 0;
-  padding: 0;
+  list-style-type:none;
+  list-style-image:none;
+  margin:0;
+  padding:0;
 
 }
 
 #menu li.topmenu {
-  float: left;
+  float:left;
 }
 
 .topmenu a {
-  float: left;
-  width: 400px;
-  text-align: center;
+  float:left;
+  width:400px;
+  text-align:center;
+  background-color: rgba(52, 73, 97, 0.8);
 }
 
-.topmenu ul {
-  display: none;
+.topmenu ul{
+  display:none;
 }
 
-.topmenu a,
-.submenu a {
-  padding: 15px;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  background-color: grey;
-  margin: 0;
+.topmenu a, .submenu a{
+  padding:15px;
+  color:white;
+  font-weight:bold;
+  text-decoration:none;
+  margin:0;
 }
 
-.submenu a {
-  font-size: 12px;
-  width: 400px;
-  position: relative;
-  clear: both;
+.submenu a{
+  font-size:12px;
+  width:400px;
+  position:relative;
+  clear:both;
 }
 
-#menu a:hover,
-.topmenu.on a {
-  color: white;
-  background-color: darkgrey !important;
+#menu a:hover, .topmenu.on a {
+  color:white;
+  background-color: rgba(80, 91, 25, 0.8);
+  opacity: 30%;
 }
 
 .topmenu:hover ul {
-  display: block;
-  z-index: 500;
+  display:block;
+  z-index:500;
 }
 
-/* Such leiste */
-button {
-  width: 100px;
+#map {
+  weight:1280px;
+  margin: auto;
+  height: 70vh;
+  border: 3px solid rgba(52, 73, 97,1);
+
 }
