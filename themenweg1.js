@@ -106,7 +106,16 @@ Themenwege.bindPopup(function(layer) {
   const NAME_wege = (props_wege.NAME_DE)
   const popupText = `<h3>${props_wege.NAME_DE}</h3>
   <p>Gehzeit in Stunden: ${props_wege.GEHZEIT}</p>
-  <p>Bschreibung ${props_wege.BESCHREIBUNG}</p>`;
+  <p>Länge: ${props_wege.LENGTH/1000} km</p>
+  <p>Schwierigkeit: ${props_wege.SCHWIERIGKEIT}</p>
+  <p>Jahreszeit: ${props_wege.JAHRESZEIT}</p>
+  <p>Ausgangspunkt: ${props_wege.AUSGANGSPUNKT}</p>
+  <p>Zielpunkt: ${props_wege.ZIELPUNKT}</p>
+
+  `
+  
+
+        
   return popupText;
 });
 karte.addLayer(Themenwege);
@@ -129,14 +138,19 @@ new L.GPX(gpx, {
   const minSpan = document.getElementById("min");
   const maxSpan = document.getElementById("max");
   const diffSpan = document.getElementById("diff");
+
   minSpan.innerHTML = e.target.get_elevation_min();
   maxSpan.innerHTML = e.target.get_elevation_max();
   diffSpan.innerHTML = Math.round(e.target.get_elevation_gain());
- 
+  
+ console.log(e.target)
+
 
 
 }).on('addline', function(e) {
 console.log(gpx);
+
+
 
 
   const controlElevation = L.control.elevation({
