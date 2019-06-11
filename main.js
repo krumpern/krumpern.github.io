@@ -69,7 +69,7 @@ karte.addControl(new L.Control.Fullscreen());
 
 // Grenzen des NPHT eingefügt
 const Grenze = L.geoJson(Border, {
-  color: "#006400"
+  color: "#505B19"
 }).addTo(karte);
 layerControl.addOverlay(Grenze, "Grenze NPHT");
 
@@ -92,17 +92,12 @@ karte.addLayer(PointsofInterest);
 layerControl.addOverlay(PointsofInterest, "Points of Interest");
 
 
-//einfügen von Zonen erfolgt. toDo: für die Zonentypen farblich abstimmen, und Clickable Popup erstellen!!!!
-const makeZonen = L.geoJson(Zonen, {
-  color: "#FF4000"
-
-}).addTo(karte);
-layerControl.addOverlay(makeZonen, "Zonen NPHT");
-
 
 //--------------THemenwege-------------//
 var Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege,)
+const Themenwege_json = L.geoJson(wege,{
+  color:"#344961"
+})
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
