@@ -102,7 +102,7 @@ layerControl.addOverlay(makeZonen, "Zonen NPHT");
 
 //--------------THemenwege-------------//
 var Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege)
+const Themenwege_json = L.geoJson(wege,)
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
@@ -114,8 +114,24 @@ Themenwege.bindPopup(function(layer) {
   <p>Bschreibung ${props_wege.BESCHREIBUNG}</p>`;
   return popupText;
 });
-karte.addLayer(Themenwege);
+//karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
+
+
+const suchFeld = new L.Control.Search( {
+    layer: Themenwege_json,
+    propertyName: 'NAME_DE',
+    zoom:17,
+    marker: false,
+    initial: false,
+});
+karte.addControl(suchFeld);
+
+
+
+// ------------Suchfeld New ---------
+
+
 
 
 /*
@@ -133,11 +149,11 @@ var fastMarker = L.marker([36.8963965256, 30.7087719440], { tags: ['fast'] }).ad
     }).addTo(karte);
 
 
-*/ 
+*/
 // Anderer Versuch: https://stackoverflow.com/questions/21974597/leaflet-js-is-it-possible-to-filter-geojson-features-by-property
 
 
-
+/*
 L.geoJson(wege, {
   filter: function(feature, layer) {
       return feature.properties.GEHZEIT;
