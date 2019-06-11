@@ -118,14 +118,28 @@ Themenwege.bindPopup(function(layer) {
 layerControl.addOverlay(Themenwege, "Themenwege");
 
 
-const suchFeld = new L.Control.Search( {
+const suchFeld_Name = new L.Control.Search( {
     layer: Themenwege_json,
     propertyName: 'NAME_DE',
     zoom:17,
     marker: false,
     initial: false,
+    collapsed: false,
+    textPlaceholder: "Suche Name",
 });
-karte.addControl(suchFeld);
+
+const suchFeld_Gehzeit = new L.Control.Search( {
+    layer: Themenwege_json,
+    propertyName: 'GEHZEIT',
+    zoom:17,
+    marker: false,
+    initial: false,
+    collapsed: false,
+    textPlaceholder: "Suche nach Gehzeit",
+});
+karte.addControl(suchFeld_Gehzeit);
+karte.addControl(suchFeld_Name);
+
 
 
 
