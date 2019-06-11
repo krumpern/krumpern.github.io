@@ -116,26 +116,41 @@ Themenwege.bindPopup(function(layer) {
 });
 //karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
-
-
+/*
 const suchFeld_Name = new L.Control.Search( {
     layer: Themenwege_json,
     propertyName: 'NAME_DE',
-    zoom:17,
+    //zoom:14,
     marker: false,
     initial: false,
     collapsed: false,
     textPlaceholder: "Suche Name",
 });
+*/
+function makeMarker(feature, latlng) { //Marker definieren
+    const fotoIcon = L.icon({ //Icon definieren
+        iconUrl: 'http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg',
+        iconSize: [16, 16]
+    });
+    const wegeMarker = L.marker(latlng, { //marker setzen und icon verwenden
+        icon: fotoIcon
+    });
+    //Popup definieren: mit den Properties Namen und Bemerkung
+    wegeMarker.bindPopup(`
+         <h3>${feature.properties.NAME_DE}</h3>
+         <p>${feature.properties.GEHZEIT}</p>  `);
+    return wegeMarker; //Marker ausgeben
+}
 
 const suchFeld_Gehzeit = new L.Control.Search( {
     layer: Themenwege_json,
     propertyName: 'GEHZEIT',
-    zoom:17,
-    marker: false,
+    zoom:15,
+    marker: {makeMarker},
     initial: false,
     collapsed: false,
     textPlaceholder: "Suche nach Gehzeit",
+    textErr: "Kein Treffer bitte weitersuchen"
 });
 karte.addControl(suchFeld_Gehzeit);
 karte.addControl(suchFeld_Name);

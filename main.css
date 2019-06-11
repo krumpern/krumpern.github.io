@@ -1,37 +1,33 @@
-body {
-  max-width: 1280px;
-  margin: auto;
-  font-family: "Roboto", sans-serif;
-}
-
-#map {
-  width: 1280px;
-  margin:auto;
-  height: 70vh;
-  border: 1px solid gray;
-}
-
-header {
+header{
   text-align: center;
+  weight: 1280px;
   background-image: url("images/header.jpg");
-  background-position: 0 50%;
+  background-position: 0 35%;
   padding: 10em 0;
 
 }
 
+body{
+  max-width: 1280px;
+  margin: auto;
+  color:rgba(52, 73, 97,1);
+}
 
-header h1{
+p{
+  font-size:1.3em;
+}
+
+header h1 {
   font-size: 4em;
-  color: white;
-  margin:0;
+  color: rgba(52, 73, 97,1);
+  margin: 0;
 }
 
 
-header h2 {
+ h2 {
   font-size: 2em;
-
-  }
-
+  color:rgba(80, 91, 25,1)
+}
 
 /* Naviagtion einfügen */
 
@@ -56,6 +52,7 @@ header h2 {
   float:left;
   width:400px;
   text-align:center;
+  background-color: rgba(52, 73, 97, 0.8);
 }
 
 .topmenu ul{
@@ -67,7 +64,6 @@ header h2 {
   color:white;
   font-weight:bold;
   text-decoration:none;
-  background-color:grey;
   margin:0;
 }
 
@@ -80,7 +76,8 @@ header h2 {
 
 #menu a:hover, .topmenu.on a {
   color:white;
-  background-color:darkgrey !important;
+  background-color: rgba(80, 91, 25, 0.8); /*rgba(146, 170, 46, 0.7); */
+  opacity: 30%;
 }
 
 .topmenu:hover ul {
@@ -88,7 +85,10 @@ header h2 {
   z-index:500;
 }
 
-/* Such leiste */
-button {
-        width: 100px;
-    }
+#map {
+  weight:1280px;
+  margin: auto;
+  height: 70vh;
+  border: 3px solid rgba(52, 73, 97,1);
+
+}

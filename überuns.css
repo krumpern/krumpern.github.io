@@ -1,22 +1,18 @@
 body {
-  max-width: 1280px;
+  width: 1290px;
   margin: auto;
   font-family: "Roboto", sans-serif;
+  text-align: center;
 }
 
-#map {
-  width: 1280px;
-  margin:auto;
-  height: 70vh;
-  border: 1px solid gray;
-}
 
 header {
   text-align: center;
+  width: 1290px;
   background-image: url("images/header.jpg");
   background-position: 0 50%;
   padding: 10em 0;
-  
+
 }
 
 
@@ -29,11 +25,11 @@ header h1{
 
 header h2 {
   font-size: 2em;
-      
+
   }
-  
-     
-/* Naviagtion einfügen */ 
+
+
+/* Naviagtion einfügen */
 
 #menu {
   font-size:14px;
@@ -89,7 +85,7 @@ header h2 {
 }
 
 
-/* Krumpern vorstellung*/ 
+/* Krumpern vorstellung*/
 
 
 .author1{
@@ -107,7 +103,7 @@ margin-top:20px;}
 
 .author2{
   text-align: center;
- 
+
 }
 
 .author2 img{
