@@ -97,10 +97,10 @@ header h1 {
 
 #findbox {
   border-radius:.125em;
-  border:2px solid #1978cf;
+  border:2px solid  rgba(52, 73, 97,1);
   margin-bottom: 20px;
   padding: 4px 4px 4px 4px;
-  width: 500px;
+  width: 20em;
   height:30px;
  position: topleft;
 }
@@ -109,11 +109,34 @@ header h1 {
 
 #findbox2 {
   border-radius:.125em;
-  border:2px solid #1978cf;
+  border:2px solid rgba(52, 73, 97,1);
   margin-bottom: 20px;
   padding: 4px 4px 4px 4px;
-  width: 500px;
+  width: 20em;
   height:30px;
- margin-left:600px;
+ margin-left:23.6em;
+margin-top:-62px;
+}
+
+
+#findbox3 {
+  border-radius:.125em;
+  border:2px solid rgba(52, 73, 97,1);
+  margin-bottom: 20px;
+  padding: 4px 4px 4px 4px;
+  width: 20em;
+  height:30px;
+ margin-left:47.2em;
+margin-top:-62px;
+}
+
+#findbox4 {
+  border-radius:.125em;
+  border:2px solid rgba(52, 73, 97,1);
+  margin-bottom: 20px;
+  padding: 4px 4px 4px 4px;
+  width: 20em;
+  height:30px;
+ margin-left:70.8em;
 margin-top:-62px;
 }

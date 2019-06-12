@@ -67,59 +67,6 @@ kartenLayer.bmapgrau.addTo(karte);
 
 //karte.addControl(new L.Control.Fullscreen());
 
-// Grenzen des NPHT eingefügt
-const Grenze = L.geoJson(Border, {
-  color: "#505B19"
-}).addTo(karte);
-layerControl.addOverlay(Grenze, "Grenze NPHT");
-
-
-//--------------------POI POPUP-----------------------//
-let PointsofInterest = L.markerClusterGroup();
-const poi_json = L.geoJson(POI)
-
-PointsofInterest.addLayer(poi_json);
-PointsofInterest.bindPopup(function(layer) {
-  const props = layer.feature.properties;
-  const NAME = (props.NAME)
-  const popupText = `<h3>${props.NAME}</h3>
-  <p>Seehöhe: ${props.SEEHOEHE}</p>
-  <p>Link: ${props.URL_INTERN}</p>`;
-  return popupText;
-});
-//karte.addLayer(PointsofInterest);
-layerControl.addOverlay(PointsofInterest, "Points of Interest");
-
-
-
-
-//--------------THemenwege-------------//
-let Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege[0],{
-  color:"#344961"
-})
-
-Themenwege.addLayer(Themenwege_json);
-karte.fitBounds(Themenwege.getBounds());
-Themenwege.bindPopup(function(layer) {
-  const props_wege = layer.feature.properties;
-  const NAME_wege = (props_wege.NAME_DE)
-  const popupText = `<h3>${props_wege.NAME_DE}</h3>
-  <p>Gehzeit in Stunden: ${props_wege.GEHZEIT}</p>
-  <p>Länge: ${props_wege.LENGTH/1000} km</p>
-  <p>Schwierigkeit: ${props_wege.SCHWIERIGKEIT}</p>
-  <p>Jahreszeit: ${props_wege.JAHRESZEIT}</p>
-  <p>Ausgangspunkt: ${props_wege.AUSGANGSPUNKT}</p>
-  <p>Zielpunkt: ${props_wege.ZIELPUNKT}</p>
-
-  `
-  
-
-        
-  return popupText;
-});
-karte.addLayer(Themenwege);
-layerControl.addOverlay(Themenwege, "Themenwege");
 
 //--------------------- gpx track laden.---------------------
 
@@ -142,15 +89,9 @@ new L.GPX(gpx, {
   minSpan.innerHTML = e.target.get_elevation_min();
   maxSpan.innerHTML = e.target.get_elevation_max();
   diffSpan.innerHTML = Math.round(e.target.get_elevation_gain());
-  
- console.log(e.target)
-
 
 
 }).on('addline', function(e) {
-console.log(gpx);
-
-
 
 
   const controlElevation = L.control.elevation({
@@ -209,6 +150,60 @@ new L.Control.MiniMap(
       minimized: true
   }
 ).addTo(karte);
+
+
+//--------------THemenwege-------------//
+let Themenwege = L.markerClusterGroup();
+const Themenwege_json = L.geoJson(wege[0],{
+  color:"#344961"
+})
+
+Themenwege.addLayer(Themenwege_json);
+karte.fitBounds(Themenwege.getBounds());
+Themenwege.bindPopup(function(layer) {
+  const props_wege = layer.feature.properties;
+  const NAME_wege = (props_wege.NAME_DE)
+  const popupText = `<h3>${props_wege.NAME_DE}</h3>
+  <p>Gehzeit in Stunden: ${props_wege.GEHZEIT}</p>
+  <p>Länge: ${props_wege.LENGTH/1000} km</p>
+  <p>Schwierigkeit: ${props_wege.SCHWIERIGKEIT}</p>
+  <p>Jahreszeit: ${props_wege.JAHRESZEIT}</p>
+  <p>Ausgangspunkt: ${props_wege.AUSGANGSPUNKT}</p>
+  <p>Zielpunkt: ${props_wege.ZIELPUNKT}</p>
+
+  `
+  
+
+        
+  return popupText;
+});
+karte.addLayer(Themenwege);
+layerControl.addOverlay(Themenwege, "Themenwege");
+
+
+// Grenzen des NPHT eingefügt
+const Grenze = L.geoJson(Border, {
+  color: "#505B19"
+}).addTo(karte);
+layerControl.addOverlay(Grenze, "Grenze NPHT");
+
+
+//--------------------POI POPUP-----------------------//
+let PointsofInterest = L.markerClusterGroup();
+const poi_json = L.geoJson(POI)
+
+PointsofInterest.addLayer(poi_json);
+PointsofInterest.bindPopup(function(layer) {
+  const props = layer.feature.properties;
+  const NAME = (props.NAME)
+  const popupText = `<h3>${props.NAME}</h3>
+  <p>Seehöhe: ${props.SEEHOEHE}</p>
+  <p>Link: ${props.URL_INTERN}</p>`;
+  return popupText;
+});
+//karte.addLayer(PointsofInterest);
+layerControl.addOverlay(PointsofInterest, "Points of Interest");
+
 
 
 

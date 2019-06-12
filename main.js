@@ -112,17 +112,6 @@ Themenwege.bindPopup(function (layer) {
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
-const suchFeld_Name = new L.Control.Search({
-  layer: Themenwege_json,
-  propertyName: 'NAME_DE',
-  //zoom:14,
-  marker: false,
-  initial: false,
-  collapsed: false,
-  textPlaceholder: "Suche Name",
-  position: 'topright',
-  container: 'findbox'
-});
 
 function makeMarker(feature, latlng) { //Marker definieren
   const fotoIcon = L.icon({ //Icon definieren
@@ -138,6 +127,21 @@ function makeMarker(feature, latlng) { //Marker definieren
          <p>${feature.properties.GEHZEIT}</p>  `);
   return wegeMarker; //Marker ausgeben
 }
+
+// Suchleiste einfügen 
+const suchFeld_Name = new L.Control.Search({
+  layer: Themenwege_json,
+  propertyName: 'NAME_DE',
+  //zoom:14,
+  marker: false,
+  initial: false,
+  collapsed: false,
+  textPlaceholder: "Suche nach Name",
+  position: 'topright',
+  container: 'findbox',
+  autoCollapse:true,
+});
+
 
 const suchFeld_Gehzeit = new L.Control.Search({
   container: 'findbox2',
@@ -157,6 +161,38 @@ const suchFeld_Gehzeit = new L.Control.Search({
     }),
   }*/
 });
+
+
+const suchFeld_Schwierigkeit = new L.Control.Search({
+  layer: Themenwege_json,
+  propertyName: 'SCHWIERIGKEIT',
+  //zoom:14,
+  marker: false,
+  initial: false,
+  collapsed: false,
+  textPlaceholder: "Suche nach Schwierigkeit",
+  position: 'topright',
+  container: 'findbox3',
+  autoCollapse:true,
+});
+
+
+
+const suchFeld_Jahreszeit = new L.Control.Search({
+  layer: Themenwege_json,
+  propertyName: 'JAHRESZEIT',
+  //zoom:14,
+  marker: false,
+  initial: false,
+  collapsed: false,
+  textPlaceholder: "Suche nach Jahreszeit",
+  position: 'topright',
+  container: 'findbox4',
+  autoCollapse:true,
+});
+
+karte.addControl(suchFeld_Jahreszeit);
+karte.addControl(suchFeld_Schwierigkeit);
 karte.addControl(suchFeld_Gehzeit);
 karte.addControl(suchFeld_Name);
 
