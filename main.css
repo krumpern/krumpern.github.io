@@ -93,3 +93,27 @@ header h1 {
   border: 3px solid rgba(52, 73, 97,1);
 
 }
+
+
+#findbox {
+  border-radius:.125em;
+  border:2px solid #1978cf;
+  margin-bottom: 20px;
+  padding: 4px 4px 4px 4px;
+  width: 500px;
+  height:30px;
+ position: topleft;
+}
+
+
+
+#findbox2 {
+  border-radius:.125em;
+  border:2px solid #1978cf;
+  margin-bottom: 20px;
+  padding: 4px 4px 4px 4px;
+  width: 500px;
+  height:30px;
+ margin-left:600px;
+margin-top:-62px;
+}

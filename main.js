@@ -80,7 +80,7 @@ const poi_json = L.geoJson(POI)
 
 PointsofInterest.addLayer(poi_json);
 karte.fitBounds(PointsofInterest.getBounds());
-PointsofInterest.bindPopup(function(layer) {
+PointsofInterest.bindPopup(function (layer) {
   const props = layer.feature.properties;
   const NAME = (props.NAME)
   const popupText = `<h3>${props.NAME}</h3>
@@ -95,13 +95,13 @@ layerControl.addOverlay(PointsofInterest, "Points of Interest");
 
 //--------------THemenwege-------------//
 var Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege,{
-  color:"#344961"
+const Themenwege_json = L.geoJson(wege, {
+  color: "#344961"
 })
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
-Themenwege.bindPopup(function(layer) {
+Themenwege.bindPopup(function (layer) {
   const props_wege = layer.feature.properties;
   const NAME_wege = (props_wege.NAME_DE)
   const popupText = `<h3>${props_wege.NAME_DE}</h3>
@@ -111,41 +111,51 @@ Themenwege.bindPopup(function(layer) {
 });
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
-/*
-const suchFeld_Name = new L.Control.Search( {
-    layer: Themenwege_json,
-    propertyName: 'NAME_DE',
-    //zoom:14,
-    marker: false,
-    initial: false,
-    collapsed: false,
-    textPlaceholder: "Suche Name",
+
+const suchFeld_Name = new L.Control.Search({
+  layer: Themenwege_json,
+  propertyName: 'NAME_DE',
+  //zoom:14,
+  marker: false,
+  initial: false,
+  collapsed: false,
+  textPlaceholder: "Suche Name",
+  position: 'topright',
+  container: 'findbox'
 });
-*/
+
 function makeMarker(feature, latlng) { //Marker definieren
-    const fotoIcon = L.icon({ //Icon definieren
-        iconUrl: 'http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg',
-        iconSize: [16, 16]
-    });
-    const wegeMarker = L.marker(latlng, { //marker setzen und icon verwenden
-        icon: fotoIcon
-    });
-    //Popup definieren: mit den Properties Namen und Bemerkung
-    wegeMarker.bindPopup(`
+  const fotoIcon = L.icon({ //Icon definieren
+    iconUrl: 'http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg',
+    iconSize: [16, 16]
+  });
+  const wegeMarker = L.marker(latlng, { //marker setzen und icon verwenden
+    icon: fotoIcon
+  });
+  //Popup definieren: mit den Properties Namen und Bemerkung
+  wegeMarker.bindPopup(`
          <h3>${feature.properties.NAME_DE}</h3>
          <p>${feature.properties.GEHZEIT}</p>  `);
-    return wegeMarker; //Marker ausgeben
+  return wegeMarker; //Marker ausgeben
 }
 
-const suchFeld_Gehzeit = new L.Control.Search( {
-    layer: Themenwege_json,
-    propertyName: 'GEHZEIT',
-    zoom:15,
-    marker: false,
-    initial: false,
-    collapsed: false,
-    textPlaceholder: "Suche nach Gehzeit",
-    textErr: "Kein Treffer bitte weitersuchen"
+const suchFeld_Gehzeit = new L.Control.Search({
+  container: 'findbox2',
+  layer: Themenwege_json,
+  propertyName: 'GEHZEIT',
+  zoom: 15,
+  marker: false,
+  initial: false,
+  collapsed: false,
+  textPlaceholder: "Suche nach Gehzeit",
+  textErr: "Kein Treffer bitte weitersuchen",
+  autoCollapse:true,
+  /*marker:{
+    icon: new L.Icon({
+      iconUrl:'icon/wlan.png',
+      iconSize:[20,20]
+    }),
+  }*/
 });
 karte.addControl(suchFeld_Gehzeit);
 karte.addControl(suchFeld_Name);
