@@ -87,9 +87,21 @@ header h1 {
 }
 
 #map {
-  weight:1280px;
+  weight: 1280px;
   margin: auto;
   height: 70vh;
   border: 3px solid rgba(52, 73, 97,1);
+
+}
+
+#textWeg{
+  width:69em;
+
+}
+
+.wegbild{
+ 
+  margin-left: 70.5em;
+  margin-top:-320px;
 
 }

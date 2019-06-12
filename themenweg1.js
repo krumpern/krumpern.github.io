@@ -65,7 +65,8 @@ const layerControl = L.control.layers({
 kartenLayer.bmapgrau.addTo(karte);
 //karte.setView([47.208333, 13.038240], 10);
 
-//karte.addControl(new L.Control.Fullscreen());
+
+
 
 
 //--------------------- gpx track laden.---------------------
@@ -103,9 +104,9 @@ new L.GPX(gpx, {
 
 
 
-
   controlElevation.addTo(karte);
   controlElevation.addData(e.line);
+
   const gpxline = e.line.getLatLngs();
   //console.log(gpxline);
   for (let i=1; i< gpxline.length; i+=1){
@@ -139,24 +140,12 @@ new L.GPX(gpx, {
 }
 });
 
-// Minimap
 
-new L.Control.MiniMap(
-  L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
-      subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-  }), {
-      zoomLevelOffset: -4,
-      toggleDisplay: true,
-      minimized: true
-  }
-).addTo(karte);
-
-
-//--------------THemenwege-------------//
+//--------------Themenwege-------------//
 let Themenwege = L.markerClusterGroup();
-const Themenwege_json = L.geoJson(wege[0],{
+const Themenwege_json = L.geoJson(wegePopup[0],{
   color:"#344961"
-})
+});
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
@@ -170,11 +159,8 @@ Themenwege.bindPopup(function(layer) {
   <p>Jahreszeit: ${props_wege.JAHRESZEIT}</p>
   <p>Ausgangspunkt: ${props_wege.AUSGANGSPUNKT}</p>
   <p>Zielpunkt: ${props_wege.ZIELPUNKT}</p>
-
   `
   
-
-        
   return popupText;
 });
 karte.addLayer(Themenwege);
@@ -186,6 +172,8 @@ const Grenze = L.geoJson(Border, {
   color: "#505B19"
 }).addTo(karte);
 layerControl.addOverlay(Grenze, "Grenze NPHT");
+
+
 
 
 //--------------------POI POPUP-----------------------//
@@ -201,39 +189,20 @@ PointsofInterest.bindPopup(function(layer) {
   <p>Link: ${props.URL_INTERN}</p>`;
   return popupText;
 });
-//karte.addLayer(PointsofInterest);
+karte.addLayer(PointsofInterest);
 layerControl.addOverlay(PointsofInterest, "Points of Interest");
 
 
 
+// Minimap
 
-/* Versuch: Zonentypen farblich abstimmen -> Fail :(
-const makeZonen = L.geoJson(Zonen);
-const farbPaletteZonen = [
-  [0, "#01DF01"],
-  [1, "#FF0000"]
-];
-console.log(farbPaletteZonen)
-L.geoJson(Zonen, {
-pointToLayer: function (feature, latlng) {
-  if (feature.properties.KERNZONE) {
-    let color = farbPaletteZonen[farbPaletteZonen.length - 1][1];
-    for (let i = 0; i < farbPaletteZonen.length; i++) {
-      if (feature.properties.KERNZONE < farbPaletteZonen[i][0]) {
-        color = farbPaletteZonen[i][1];
-        break;
-      } else {
-
-      }
-
-    }
+new L.Control.MiniMap(
+  L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+      subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
+  }), {
+      zoomLevelOffset: -4,
+      toggleDisplay: true,
+      minimized: true
   }
+).addTo(karte);
 
-}
-}).addTo(makeZonen);
-layerControl.addOverlay(makeZonen, "Zonen NPHT");
-
-makeZonen.addTo(karte)
-
-
-*/

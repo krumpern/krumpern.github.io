@@ -30,6 +30,7 @@
   <script src="data/POI_WGS84_arry.js"></script>
   <script src="data/Zonen.js"></script>
   <script src="data/wege.js"></script>
+  <script src="data/wegepopup.js"></script>
 
   <!--Verlinkung der Minimap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
@@ -75,7 +76,7 @@
 
     </header>
     <h1> Wegbeschreibung </h1>
-    <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+   <div id="textWeg"> <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
       kasd gubergren, no
       sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -89,13 +90,18 @@
            Niedrigster Punkt: <b><span id="min"></span> m</b> <br> 
            Höchster Punkt: <b><span id="max"></span> m</b> <br>
            Höhenunterschied: <b><span id="diff"></span> m</b>
+        <br>
+        <br>
+        <br>
+        <br>
           </p>
-        
-   
-     </ul>
+        </div>   
 
+        <div class="wegbild">
+          <!-- Bildgröße 300 x 225 in Bildbearbeitungsprogramm ändern! -->
+          <img src="images/debanttalneu.jpg" alt="Symbolbild für Themenweg">        
+   </div>
     
-      
     <br>
 
     <main>
