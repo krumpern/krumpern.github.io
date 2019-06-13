@@ -106,9 +106,12 @@ Themenwege.bindPopup(function (layer) {
   const NAME_wege = (props_wege.NAME_DE)
   const popupText = `<h3>${props_wege.NAME_DE}</h3>
   <p>Gehzeit in Stunden: ${props_wege.GEHZEIT}</p>
-  <p>Bschreibung ${props_wege.BESCHREIBUNG}</p>`;
+  <footer> <a target = "blank", href="${props_wege.URL_KRUMPERN}"> Link zum Weg</a><//footer>`;
   return popupText;
+
 });
+
+
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
 
@@ -128,7 +131,7 @@ function makeMarker(feature, latlng) { //Marker definieren
   return wegeMarker; //Marker ausgeben
 }
 
-// Suchleiste einfügen 
+// Suchleiste einfügen
 const suchFeld_Name = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'NAME_DE',
