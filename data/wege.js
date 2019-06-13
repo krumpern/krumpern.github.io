@@ -5,7 +5,7 @@ const wege =
         "OBJECTID": 1,
         "NAME_DE": "Natur- und Kulturlehrweg Debanttal",
         "URL_INTERN": "http:\/\/www.nationalparkerlebnis.at",
-        "URL_KRUMPERN": "https://krumpern.github.io/kurlturlehrwegDebant.html",
+        "URL_KRUMPERN": "https://krumpern.github.io/kulturlehrwegDebant.html",
         "TYP": "LW",
         "SO_WI": "Sommer",
         "LENGTH": 7550,
