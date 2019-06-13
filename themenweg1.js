@@ -71,6 +71,8 @@ kartenLayer.bmapgrau.addTo(karte);
 
 //--------------------- gpx track laden.---------------------
 
+let gpxGruppe = L.featureGroup()//.addTo(karte);
+
 var gpx = 'data/1_Natur-und_Kulturlehrweg_Debanttal.gpx'; // URL to your GPX file or the GPX itself
 new L.GPX(gpx, {
   async: true,
@@ -96,7 +98,8 @@ new L.GPX(gpx, {
 
 
   const controlElevation = L.control.elevation({
-    collapsed: true,        //für in Karte Implementierte Höhenprofile.
+    theme:"steelblue-theme",
+    collapsed: true,       //für in Karte Implementierte Höhenprofile.
     //detachedView: true,
     position: "bottomleft",
   //  elevationDiv: "#elevation-div",
@@ -136,9 +139,11 @@ new L.GPX(gpx, {
       ], {
         color:farbe,
       }
-    ).addTo(karte);
+    ).addTo(gpxGruppe);
 }
 });
+///------------versuch Popup to polyline ------///
+
 
 
 //--------------Themenwege-------------//
@@ -160,20 +165,16 @@ Themenwege.bindPopup(function(layer) {
   <p>Ausgangspunkt: ${props_wege.AUSGANGSPUNKT}</p>
   <p>Zielpunkt: ${props_wege.ZIELPUNKT}</p>
   `
-  
   return popupText;
 });
-karte.addLayer(Themenwege);
-layerControl.addOverlay(Themenwege, "Themenwege");
+
+
 
 
 // Grenzen des NPHT eingefügt
 const Grenze = L.geoJson(Border, {
   color: "#505B19"
 }).addTo(karte);
-layerControl.addOverlay(Grenze, "Grenze NPHT");
-
-
 
 
 //--------------------POI POPUP-----------------------//
@@ -190,9 +191,13 @@ PointsofInterest.bindPopup(function(layer) {
   return popupText;
 });
 karte.addLayer(PointsofInterest);
+
+layerControl.addOverlay(Grenze, "Grenze NPHT");
 layerControl.addOverlay(PointsofInterest, "Points of Interest");
+layerControl.addOverlay(gpxGruppe, "gpxTrack");
+layerControl.addOverlay(Themenwege, "Themenwege");
 
-
+karte.addLayer(Themenwege);
 
 // Minimap
 
@@ -205,4 +210,3 @@ new L.Control.MiniMap(
       minimized: true
   }
 ).addTo(karte);
-
