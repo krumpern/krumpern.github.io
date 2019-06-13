@@ -75,12 +75,7 @@ let gpxGruppe = L.featureGroup()//.addTo(karte);
 
 var gpx = 'data/1_Natur-und_Kulturlehrweg_Debanttal.gpx'; // URL to your GPX file or the GPX itself
 new L.GPX(gpx, {
-  async: true,
-  marker_options: {
-    startIconUrl: 'images/pin-icon-start.png',
-    endIconUrl: 'images/pin-icon-end.png',
-    shadowUrl: 'images/pin-shadow.png'
-  }
+  async: true
 }).on('loaded', function(e) {
   karte.fitBounds(e.target.getBounds());
 
@@ -89,8 +84,8 @@ new L.GPX(gpx, {
   const maxSpan = document.getElementById("max");
   const diffSpan = document.getElementById("diff");
 
-  minSpan.innerHTML = e.target.get_elevation_min();
-  maxSpan.innerHTML = e.target.get_elevation_max();
+  minSpan.innerHTML = Math.round(e.target.get_elevation_min());
+  maxSpan.innerHTML = Math.round(e.target.get_elevation_max());
   diffSpan.innerHTML = Math.round(e.target.get_elevation_gain());
 
 
