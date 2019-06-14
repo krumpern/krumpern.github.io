@@ -128,3 +128,15 @@ margin-top:0px;}
 .author3 address a {
   color: grey;
 }
+
+
+#Überschrift_Gruppenmitglieder{
+  text-align: center; 
+  font-size: 2em;
+  color:rgba(80, 91, 25,1)
+}
+
+
+a{
+  color:  rgba(52, 73, 97,1);
+  }
