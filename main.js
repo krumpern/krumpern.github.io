@@ -85,7 +85,7 @@ PointsofInterest.bindPopup(function (layer) {
   const NAME = (props.NAME)
   const popupText = `<h3>${props.NAME}</h3>
   <p>Seehöhe: ${props.SEEHOEHE}</p>
-  <p>Link: ${props.URL_INTERN}</p>`;
+  <p><footer> <a target = "blank", href="${props.URL_INTERN}"> Weitere Informationen</a><//footer>`;
   return popupText;
 });
 karte.addLayer(PointsofInterest);
