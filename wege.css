@@ -94,14 +94,47 @@ header h1 {
 
 }
 
-#textWeg{
-  width:69em;
+
+
+#Statistik{
+ width:20em;
+ height:15em;
+  background-color: rgba(80, 91, 25, 0.2);
+  border: 3px solid rgba(52, 73, 97,1);
+
+  margin-top:absolute;
+text-align: center;
+margin-left:6em;
+}
+
+#Kurzinfo{
+  background-color: rgba(80, 91, 25, 0.2);
+  border: 3px solid rgba(52, 73, 97,1);
+
+  width:30em;
+  height: 15em;
+  margin-left:55em; 
+  margin-top:-20em;
+  text-align: center;
+
+  
+}
+
+#wegbild{ 
+padding-left:2em;
+  margin-left:28em; 
+  margin-top:-16em;
 
 }
 
-.wegbild{
- 
-  margin-left: 70.5em;
-  margin-top:-320px;
 
+#Auflistung{
+  font-size: 1.6em;
+  color: rgba(52, 73, 97,1);
+  margin-left:2em;
+
+}
+
+a{
+color:  rgba(52, 73, 97,1);
 }
