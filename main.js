@@ -84,7 +84,7 @@ PointsofInterest.bindPopup(function (layer) {
   const props = layer.feature.properties;
   const NAME = (props.NAME)
   const popupText = `<h3>${props.NAME}</h3>
-  <p>Seehöhe: ${props.SEEHOEHE}</p>
+  <p>Seehöhe in m: ${props.SEEHOEHE}</p>
   <p> <a target = "blank", href="${props.URL_INTERN}"> Weitere Informationen</a> </p>`;
   return popupText;
 });
@@ -135,7 +135,7 @@ function makeMarker(feature, latlng) { //Marker definieren
 const suchFeld_Name = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'NAME_DE',
-  //zoom:14,
+  zoom:14,
   marker: false,
   initial: false,
   collapsed: false,
@@ -143,6 +143,8 @@ const suchFeld_Name = new L.Control.Search({
   position: 'topright',
   container: 'findbox',
   autoCollapse:true,
+  autoCollapseTime:1200,
+
 });
 
 
@@ -150,26 +152,22 @@ const suchFeld_Gehzeit = new L.Control.Search({
   container: 'findbox2',
   layer: Themenwege_json,
   propertyName: 'GEHZEIT',
-  zoom: 15,
+  zoom: 14,
   marker: false,
   initial: false,
   collapsed: false,
   textPlaceholder: "Suche nach Gehzeit",
   textErr: "Kein Treffer bitte weitersuchen",
   autoCollapse:true,
-  /*marker:{
-    icon: new L.Icon({
-      iconUrl:'icon/wlan.png',
-      iconSize:[20,20]
-    }),
-  }*/
+  autoCollapseTime:1200,
+ 
 });
 
 
 const suchFeld_Schwierigkeit = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'SCHWIERIGKEIT',
-  //zoom:14,
+  zoom:14,
   marker: false,
   initial: false,
   collapsed: false,
@@ -177,6 +175,7 @@ const suchFeld_Schwierigkeit = new L.Control.Search({
   position: 'topright',
   container: 'findbox3',
   autoCollapse:true,
+  autoCollapseTime:1200,
 });
 
 
@@ -184,7 +183,7 @@ const suchFeld_Schwierigkeit = new L.Control.Search({
 const suchFeld_Jahreszeit = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'JAHRESZEIT',
-  //zoom:14,
+  zoom:14,
   marker: false,
   initial: false,
   collapsed: false,
@@ -192,6 +191,7 @@ const suchFeld_Jahreszeit = new L.Control.Search({
   position: 'topright',
   container: 'findbox4',
   autoCollapse:true,
+  autoCollapseTime:1200,
 });
 
 karte.addControl(suchFeld_Jahreszeit);
@@ -201,83 +201,3 @@ karte.addControl(suchFeld_Name);
 
 
 
-
-// ------------Suchfeld New ---------
-
-
-
-
-/*
-//--------------Suchfeld Try try tryyyy--------
-var fastMarker = L.marker([36.8963965256, 30.7087719440], { tags: ['fast'] }).addTo(karte).bindPopup('fast');
-	var slowMarker = L.marker([36.8967740487, 30.7107782364], { tags: ['slow'] }).addTo(karte).bindPopup('slow');
-	var bothMarker = L.marker([36.8881768737, 30.7024331594], { tags: ['fast', 'slow'] }).addTo(karte).bindPopup('fast & slow');
-
-	//
-
-	L.control.tagFilterButton({
-        data: ['fast', 'slow', 'none'],
-        icon: '<img src="filter.png">',
-        filterOnEveryClick: true
-    }).addTo(karte);
-
-
-*/
-// Anderer Versuch: https://stackoverflow.com/questions/21974597/leaflet-js-is-it-possible-to-filter-geojson-features-by-property
-
-
-/*
-L.geoJson(wege, {
-  filter: function(feature, layer) {
-      return feature.properties.GEHZEIT;
-  }
-}).addTo(karte);
-
-
-L.geoJson(wege, {
-  pointToLayer: function(feature, latlng) {
-      L.marker(latlng, {
-          tags: [ '3']
-      });
-  }
-}).addTo( karte);
-
-
-
-
-L.control.tagFilterButton({
-  data: [ '3']
-}).addTo( karte );
-
-
-
-/* Versuch: Zonentypen farblich abstimmen -> Fail :(
-const makeZonen = L.geoJson(Zonen);
-const farbPaletteZonen = [
-  [0, "#01DF01"],
-  [1, "#FF0000"]
-];
-console.log(farbPaletteZonen)
-L.geoJson(Zonen, {
-pointToLayer: function (feature, latlng) {
-  if (feature.properties.KERNZONE) {
-    let color = farbPaletteZonen[farbPaletteZonen.length - 1][1];
-    for (let i = 0; i < farbPaletteZonen.length; i++) {
-      if (feature.properties.KERNZONE < farbPaletteZonen[i][0]) {
-        color = farbPaletteZonen[i][1];
-        break;
-      } else {
-
-      }
-
-    }
-  }
-
-}
-}).addTo(makeZonen);
-layerControl.addOverlay(makeZonen, "Zonen NPHT");
-
-makeZonen.addTo(karte)
-
-
-*/

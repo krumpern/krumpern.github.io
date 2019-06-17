@@ -137,7 +137,6 @@ new L.GPX(gpx, {
     ).addTo(gpxGruppe);
 }
 });
-///------------versuch Popup to polyline ------///
 
 
 
@@ -181,7 +180,7 @@ PointsofInterest.bindPopup(function(layer) {
   const props = layer.feature.properties;
   const NAME = (props.NAME)
   const popupText = `<h3>${props.NAME}</h3>
-  <p>Seehöhe: ${props.SEEHOEHE}</p>
+  <p>Seehöhe in m: ${props.SEEHOEHE}</p>
   <p> <a target = "blank", href="${props.URL_INTERN}"> Weitere Informationen</a> </p>`;
   return popupText;
 });
