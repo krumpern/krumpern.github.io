@@ -141,6 +141,11 @@ margin-top:-62px;
 margin-top:-62px;
 }
 
+#fail {
+  text-align: center;
+
+}
+
 
 a{
   color:  rgba(52, 73, 97,1);

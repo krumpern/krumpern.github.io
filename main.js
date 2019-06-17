@@ -80,7 +80,7 @@ const poi_json = L.geoJson(POI)
 
 PointsofInterest.addLayer(poi_json);
 karte.fitBounds(PointsofInterest.getBounds());
-PointsofInterest.bindPopup(function (layer) {
+PointsofInterest.bindPopup(function(layer) {
   const props = layer.feature.properties;
   const NAME = (props.NAME)
   const popupText = `<h3>${props.NAME}</h3>
@@ -101,7 +101,7 @@ const Themenwege_json = L.geoJson(wege, {
 
 Themenwege.addLayer(Themenwege_json);
 karte.fitBounds(Themenwege.getBounds());
-Themenwege.bindPopup(function (layer) {
+Themenwege.bindPopup(function(layer) {
   const props_wege = layer.feature.properties;
   const NAME_wege = (props_wege.NAME_DE)
   const popupText = `<h3>${props_wege.NAME_DE}</h3>
@@ -110,7 +110,6 @@ Themenwege.bindPopup(function (layer) {
   return popupText;
 
 });
-
 
 karte.addLayer(Themenwege);
 layerControl.addOverlay(Themenwege, "Themenwege");
@@ -135,15 +134,15 @@ function makeMarker(feature, latlng) { //Marker definieren
 const suchFeld_Name = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'NAME_DE',
-  zoom:14,
+  zoom: 14,
   marker: false,
   initial: false,
   collapsed: false,
   textPlaceholder: "Suche nach Name",
   position: 'topright',
   container: 'findbox',
-  autoCollapse:true,
-  autoCollapseTime:1200,
+  autoCollapse: true,
+  autoCollapseTime: 1200,
 
 });
 
@@ -158,24 +157,24 @@ const suchFeld_Gehzeit = new L.Control.Search({
   collapsed: false,
   textPlaceholder: "Suche nach Gehzeit",
   textErr: "Kein Treffer bitte weitersuchen",
-  autoCollapse:true,
-  autoCollapseTime:1200,
- 
+  autoCollapse: true,
+  autoCollapseTime: 1200,
+
 });
 
 
 const suchFeld_Schwierigkeit = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'SCHWIERIGKEIT',
-  zoom:14,
+  zoom: 14,
   marker: false,
   initial: false,
   collapsed: false,
   textPlaceholder: "Suche nach Schwierigkeit",
   position: 'topright',
   container: 'findbox3',
-  autoCollapse:true,
-  autoCollapseTime:1200,
+  autoCollapse: true,
+  autoCollapseTime: 1200,
 });
 
 
@@ -183,21 +182,18 @@ const suchFeld_Schwierigkeit = new L.Control.Search({
 const suchFeld_Jahreszeit = new L.Control.Search({
   layer: Themenwege_json,
   propertyName: 'JAHRESZEIT',
-  zoom:14,
+  zoom: 14,
   marker: false,
   initial: false,
   collapsed: false,
   textPlaceholder: "Suche nach Jahreszeit",
   position: 'topright',
   container: 'findbox4',
-  autoCollapse:true,
-  autoCollapseTime:1200,
+  autoCollapse: true,
+  autoCollapseTime: 1200,
 });
 
 karte.addControl(suchFeld_Jahreszeit);
 karte.addControl(suchFeld_Schwierigkeit);
 karte.addControl(suchFeld_Gehzeit);
 karte.addControl(suchFeld_Name);
-
-
-
