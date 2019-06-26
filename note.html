@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!--leaflet verlinken -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+  <!--Fullscreen Plugin -->
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+  <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" rel="stylesheet" />
+
+  <!--leaflet search // evlt anderes Search Plugin -->
+  <script src="plugins/leaflet-search.min.js"></script>
+  <link href="plugins/leaflet-search.min.css" rel="stylesheet" />
+
+  <!--Verlinkung main.js und main.css-->
+  <link rel="stylesheet" href="main.css">
+  <script defer src="main.js"></script>
+  <!--Verlinkung MarkerCluster-->
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet" />
+  <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" rel="stylesheet" />
+  <!--Verlinkung der Grenz Json-->
+  <script src="data/Border.js"></script>
+  <script src="data/POI_WGS84_arry.js"></script>
+  <script src="data/Zonen.js"></script>
+  <script src="data/wege.js"></script>
+
+  <!--Verlinkung der Minimap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" rel="stylesheet" />
+
+  <!-- verlinken des GPX plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
+
+  <!-- verlinkung Suchfeld -->
+  <script src="plugins/leaflet-search.min.js"></script>
+  <link href="plugins/leaflet-search.min.css" rel="stylesheet" />
+
+
+  <!--- Filter Button --->
+  <link rel="stylesheet" href="leaflet-easy-button.css" />
+  <link rel="stylesheet" href="leaflet-tag-filter-button.css" />
+  <script src="leaflet-easy-button.js"></script>
+  <script src="leaflet-tag-filter-button.js"></script>
+
+  <meta charset="utf-8">
+  <title>Themenwanderwege Nationalpark Hohe Tauern</title>
+</head>
+
+
+<body>
+  <div id="menu">
+    <ul>
+      <li class="topmenu"><a href="index.html">Home</a></li>
+      <li class="topmenu"><a href="ueberuns.html">Über uns</a></li>
+      <li class="topmenu"><a href="auswahl.html">Wege</a>
+        <ul>
+          <li class="submenu"><a href="kulturlehrwegDebant.html">Natur - und Kulturlehrweg Debanttal</a></li>
+          <!--Verlinkung der Minimap -->
+          <li class="submenu"><a href="alpenblumenweg.html"> Alpenblumenweg Oberseite (kurzer Rundweg)</a></li>
+          <li class="submenu"><a href="alpenblumenweg_oberseite.html">Alpenblumenweg Oberseite (langer Rundweg)</a></li>
+          <li class="submenu"><a href="wasserschaupfad.html">Wasserschaupfad Umbalfälle</a></li>
+          <li class="submenu"><a href="bergerlebnisweg.html">Nussdorfer Berg Erlebnisweg</a></li>
+          <li class="submenu"><a href="wasserlehrweg.html">Wasserlehrweg St. Jakob i. D.</a></li>
+          <li class="submenu"><a href="geschichtenweg.html">Geschichte(n)weg Dorfertal</a></li>
+          <li class="submenu"><a href="kinderlehrweg.html">Kinderlehrweg Kals</a></li>
+          <li class="submenu"><a href="waldlehrpfad.html">Waldlehrpfad Zedlacher Paradies</a></li>
+          <li class="submenu"><a href="geolehrpfad.html"> Glorerhütte Geolehrpfad</a></li>
+          <li class="submenu"><a href="gletscherlehrpfad.html">Gletscherlehrweg Innergschlöss</a></li>
+          <li class="submenu"><a href="zirbenwald.html"> Natur- und Kulturlehrweg Oberhauser Zirbenwald </a></li>
+          <li class="submenu"><a href="wassererlebnisweg.html">Wassererlebnisweg St. Jakob i. D. (kleine Runde)</a></li>
+          <li class="submenu"><a href="glocknerspur.html">Glocknerspur - BergeDenken</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <header>
+      <h1>Nationalpark Hohe Tauern</h1>
+      <h2>Benotung</h2>
+
+    </header>
+
+    <main>
+      <div id="note">
+      <br> <p>Ich würde mir einen <b>2er</b> geben. Da ich alle Workloads gemacht habe, auch die meisten Zusatzaufgaben habe ich
+      versucht best möglich umzusetzen. Für das Abschlussprojekt würde ich die gesamte Teamleistung als Sehr Gut einstufen.
+      Da alle ihren Teil geleistet haben und wir uns als Team allen anfälligen Problemen gestellt und gemeistert haben.
+      Als ausschalggebend für einen 2er sehe ich die fehlende Anwesenheit bei der Abschlusspräsentation.
+      <br> Abschließend möchte ich noch ein kurzes, generelles Fazit bzw. Feeback zur Lehrveranstaltung geben. Den Kurs habe ich als
+    sehr spannend und lehrreich wahrgenommen. Die LV gab einen super Einstieg bzw. ersten Überblick in das Programmieren mit HTML, CSS und JAVASCRIPT
+  auch das Projekt, in welchem wir dann die erlernten Fähigkeiten selbständig anwenden konnten und teilweise erweitern mussten war sehr gut war und machte Spaß.
+    Kritik: die Berichterstellung erschien mir als etwas unnötig :))
+  Ansonsten TOP Methodenkurs. Danke.</p>
+</div>
+  <div id="author2">
+    <img src="images/krumpern_2.png" alt="Userbild" height="100px">
+    <address>
+      <a href="mailto:johannes.koeck@student.uibk.ac.at"> <i class="far fa-envelope"></i> Johannes Köck</a> <br>
+      <a href="https://github.com/hannesklaus1/hannesklaus1.github.io"> <i class="fab fa-github"></i> hannesklaus1</a>
+    </address>
+    <br>
+  </div>
+
+    </main>
+</body>
+
+</html>

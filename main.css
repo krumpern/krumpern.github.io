@@ -146,7 +146,15 @@ margin-top:-62px;
 
 }
 
+#note {
+  text-align: justify;
+
+}
 
 a{
   color:  rgba(52, 73, 97,1);
   }
+
+#author2 {
+  text-align: center;
+}
